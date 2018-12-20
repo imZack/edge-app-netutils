@@ -25,8 +25,10 @@ func pingHandler(c *gin.Context) {
 	pinger, err := ping.NewPinger(data.Target)
 	if err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		return
 	}
 
+	pinger.SetPrivileged(true)
 	pinger.Count = 3
 	pinger.Run()
 	stats := pinger.Statistics()
@@ -43,6 +45,7 @@ func whoisHandler(c *gin.Context) {
 	result, err := whois.Whois(data.Target)
 	if err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		return
 	}
 
 	c.JSON(http.StatusOK, gin.H{"record": result})
@@ -58,6 +61,7 @@ func nslookupHandler(c *gin.Context) {
 	ips, err := net.LookupIP(data.Target)
 	if err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		return
 	}
 
 	c.JSON(http.StatusOK, gin.H{"ips": ips})
@@ -71,6 +75,6 @@ func main() {
 	r.POST("/ping", pingHandler)
 	r.POST("/whois", whoisHandler)
 	r.POST("/nslookup", nslookupHandler)
-	r.Static("/", "html")
+	r.Static("/", "/var/www/html")
 	r.Run(":80")
 }

@@ -5,7 +5,7 @@ spec:
   displayname: Network Utilities
   description: >
     Useful network utilites for troubleshooting
-  version: "0.0.1"
+  version: "0.0.5"
   arch: armhf
   category: device
   hardwares:

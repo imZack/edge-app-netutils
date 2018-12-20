@@ -1,7 +1,7 @@
 version: '2'
 services:
   app:
-    image: imzack/edge-app-netutils:0.0.1
+    image: imzack/edge-app-netutils:0.0.5
     restart: unless-stopped
     networks:
       - appservice
