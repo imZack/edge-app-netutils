@@ -71,6 +71,6 @@ func main() {
 	r.POST("/ping", pingHandler)
 	r.POST("/whois", whoisHandler)
 	r.POST("/nslookup", nslookupHandler)
-
+	r.Static("/", "html")
 	r.Run(":80")
 }
