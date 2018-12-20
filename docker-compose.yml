@@ -1,0 +1,12 @@
+version: '2'
+services:
+  app:
+    image: imZack/edge-app-netutils:0.0.1
+    restart: unless-stopped
+    networks:
+      - appservice
+
+networks:
+  appservice:
+    external:
+      name: appservice

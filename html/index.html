@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <title>Netutils</title>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Netutils</h1>
+      <hr>
+      <h2>Ping</h2>
+      <form>
+        <div class="form-group">
+          <label for="PingTarget">Ping Target</label>
+          <input type="text" class="form-control" id="PingTarget" placeholder="8.8.8.8" value="8.8.8.8">
+        </div>
+        <div class="form-group">
+          <label for="PingResult">Ping Result</label>
+          <textarea class="form-control" id="PingResult" rows="10" readonly></textarea>
+        </div>
+        <button id="pingSubmit" type="button" class="btn btn-primary btn-lg btn-block">Run</button>
+      </form>
+      <br>
+      <hr>
+      <br>
+      <h2>DNS</h2>
+      <form>
+        <div class="form-group">
+          <label for="NSlookupTarget">NSlookup Target</label>
+          <input type="text" class="form-control" id="NSlookupTarget" placeholder="google.com" value="google.com">
+        </div>
+        <div class="form-group">
+          <label for="NSlookupResult">NSlookup Result</label>
+          <textarea class="form-control" id="NSlookupResult" rows="5" readonly></textarea>
+        </div>
+        <button id="NSlookupSubmit" type="button" class="btn btn-primary btn-lg btn-block">Run</button>
+      </form>
+    </div>
+    <script type='text/javascript' src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script type='text/javascript' src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <script type='text/javascript'>
+    var url = 'http://localhost';
+    $('#pingSubmit').click(function() {
+      if ($('#pingSubmit').hasClass('disabled')) return;
+      $('#PingResult').text('Processing...');
+      $('#pingSubmit').toggleClass('disabled', true);
+      jQuery.post({
+        url: url + '/ping',
+        data: JSON.stringify({ target: $('#PingTarget').val() }),
+        contentType: "application/json; charset=utf-8",
+        dataType: 'json'
+      }).done(function(data) {
+        $('#PingResult').text(JSON.stringify(data, 2, 4));
+        $('#pingSubmit').toggleClass('disabled', false);
+      });
+    });
+
+    $('#NSlookupSubmit').click(function() {
+      if ($('#NSlookupSubmit').hasClass('disabled')) return;
+      $('#NSlookupSubmit').toggleClass('disabled', true);
+      $('#NSlookupResult').text('Processing...');
+      jQuery.post({
+        url: url + '/nslookup',
+        data: JSON.stringify({ target: $('#NSlookupTarget').val() }),
+        contentType: "application/json; charset=utf-8",
+        dataType: 'json'
+      }).done(function(data) {
+        $('#NSlookupResult').text(JSON.stringify(data, 2, 4));
+        $('#NSlookupSubmit').toggleClass('disabled', false);
+      });
+    });
+
+    </script>
+  </body>
+</html>

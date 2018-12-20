@@ -1,0 +1,14 @@
+kind: app
+version: v1
+spec:
+  name: netutils
+  displayname: Network Utilities
+  description: >
+    Useful network utilites for troubleshooting
+  version: "0.0.1"
+  arch: armhf
+  category: device
+  hardwares:
+    - serial
+  attributes:
+    - openInSameTab
