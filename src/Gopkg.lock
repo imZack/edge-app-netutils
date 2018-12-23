@@ -2,6 +2,33 @@
 
 
 [[projects]]
+  branch = "master"
+  digest = "1:6cb5c8bc00e7a7cb0380f4319eb08e385c190b5db4260dc24d75d9c564eac387"
+  name = "github.com/ddo/go-fast"
+  packages = ["."]
+  pruneopts = "UT"
+  revision = "3a2f747dc7822651b08fe2eede38cb82e9df60cd"
+
+[[projects]]
+  branch = "master"
+  digest = "1:9bfc12248e3ee94976b8baf280145188411efa758e9c02cfc84205023b28abf7"
+  name = "github.com/ddo/pick-json"
+  packages = ["."]
+  pruneopts = "UT"
+  revision = "c8760e09e0feac4fe647a1407554964046a7d96d"
+
+[[projects]]
+  branch = "master"
+  digest = "1:fe2828ae0c77c98713131fa3cb6eb2ff8fd98d5528bcfa86da0e5d788967a1f2"
+  name = "github.com/ddo/rq"
+  packages = [
+    ".",
+    "client",
+  ]
+  pruneopts = "UT"
+  revision = "e38aa30cefdd96985d621a942beb8e4448925daf"
+
+[[projects]]
   digest = "1:2b59aca2665ff804f6606c8829eaee133ddd3aefbc841014660d961b0034f888"
   name = "github.com/gin-contrib/cors"
   packages = ["."]
@@ -77,10 +104,12 @@
 
 [[projects]]
   branch = "master"
-  digest = "1:9bc993d89626dd971a2b9f14e160848520e2463add7ed3f210306bc9ba3f781d"
+  digest = "1:d1fcd0bd6247964ea233a27e1a2acba04561a68b62a552f36837650d4bdc91e3"
   name = "golang.org/x/net"
   packages = [
     "bpf",
+    "html",
+    "html/atom",
     "icmp",
     "internal/iana",
     "internal/socket",
@@ -97,6 +126,22 @@
   packages = ["unix"]
   pruneopts = "UT"
   revision = "074acd46bca67915925527c07849494d115e7c43"
+
+[[projects]]
+  digest = "1:bda5d8d823c4b09f3caa60072fab33aabd88772db5562c69864ac7599eee6a2c"
+  name = "gopkg.in/ddo/go-dlog.v2"
+  packages = ["."]
+  pruneopts = "UT"
+  revision = "7d372d18f46a69b80332bf074f705bc5e1377744"
+  version = "v2.1.0"
+
+[[projects]]
+  digest = "1:a4f26cab2ee418e4e2306933d0859988dc0753b0c6357b1b59cbe1924aa48def"
+  name = "gopkg.in/ddo/pick.v1"
+  packages = ["."]
+  pruneopts = "UT"
+  revision = "1bb445e69bd8d9c33f7843735d317f9d214cf30d"
+  version = "v1.2.2"
 
 [[projects]]
   digest = "1:1b4724d3c8125f6044925f02b485b74bfec9905cbf579d95aafd1a6c8f8447d3"
@@ -117,6 +162,7 @@
   analyzer-name = "dep"
   analyzer-version = 1
   input-imports = [
+    "github.com/ddo/go-fast",
     "github.com/gin-contrib/cors",
     "github.com/gin-gonic/gin",
     "github.com/likexian/whois-go",
