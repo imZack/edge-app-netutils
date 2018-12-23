@@ -13,6 +13,7 @@ import (
 	ping "github.com/sparrc/go-ping"
 )
 
+// Payload for request
 type TargetPayload struct {
 	Target string `json:"target" binding:"required"`
 }
